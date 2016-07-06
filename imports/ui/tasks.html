@@ -1,7 +1,14 @@
 <template name="tasklist">
+	<h2>Todos ({{ incompleteTasks }})</h2>
+	<label class="hide-comp-task">
+		<input type="checkbox" />
+		{{curentUser}} Hide completed tasks
+	</label>
+	{{#if currentUser}}
 	<form class="add-task">
 		<input type="text" name="text" placeholder="Type the task to add" />
 	</form>
+	{{/if}}
 	<ul>
 	{{#each tasks}}
 		{{> task}}
@@ -11,8 +18,14 @@
 
 <template name="task">
 <li class="{{#if checked}} checked-task {{/if}}">
-	<input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+	{{#if currentUser}}
+		<input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+	{{else}}
+		<input type="checkbox" checked="{{checked}}" disabled='true' />
+	{{/if}}
 	<span class="task-text"> {{text}} : {{formatDate date}}</span>
-	<button class="task-delete"> &times; </button>
+	{{#if currentUser}}
+		<button class="task-delete"> &times; </button>
+	{{/if}}
 </li>
 </template>

@@ -219,6 +219,9 @@ header .hide-completed {
 }
 
  
+h2 {
+	text-align: center;
+}
 
 .toggle-private {
 
