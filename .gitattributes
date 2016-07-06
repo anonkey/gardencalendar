@@ -1,0 +1,5 @@
+.meteor filter=lfs diff=lfs merge=lfs -text
+.meteor/local/db/journal/j._0 filter=lfs diff=lfs merge=lfs -text
+.meteor/local/db/journal/lsn filter=lfs diff=lfs merge=lfs -text
+.meteor/local/db/journal/prealloc.1 filter=lfs diff=lfs merge=lfs -text
+.meteor/local/db/journal/prealloc.2 filter=lfs diff=lfs merge=lfs -text
