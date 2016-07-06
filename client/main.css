@@ -4,7 +4,7 @@ body {
 
   background-color: #315481;
 
-  background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+  background-image: linear-gradient(to bottom, #315481, #000000 100%);
 
   background-attachment: fixed;
 
@@ -52,7 +52,7 @@ header {
 
   background: #d2edf4;
 
-  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  background-image: linear-gradient(to bottom, #FFFFFF, #606060 100%);
 
   padding: 20px 15px 15px 15px;
 
@@ -128,7 +128,7 @@ form {
 
 ul {
 
-  margin: 0;
+  margin: 10 0 0 0;
 
   padding: 0;
 
@@ -154,10 +154,18 @@ ul {
 
 }
 
- 
+.toggle-checked {
+	margin-right: 25px;
+}
+
+.task-delete {
+	float: right;
+}
 
 li {
 
+  background-image: linear-gradient(to right, #315481, #FFFFFF 10%);
+  
   position: relative;
 
   list-style: none;
