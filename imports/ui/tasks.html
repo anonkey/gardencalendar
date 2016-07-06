@@ -1,0 +1,18 @@
+<template name="tasklist">
+	<form class="add-task">
+		<input type="text" name="text" placeholder="Type the task to add" />
+	</form>
+	<ul>
+	{{#each tasks}}
+		{{> task}}
+	{{/each}}
+	</ul>
+</template>
+
+<template name="task">
+<li class="{{#if checked}} checked-task {{/if}}">
+	<input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+	<span class="task-text"> {{text}} : {{formatDate date}}</span>
+	<button class="task-delete"> &times; </button>
+</li>
+</template>
