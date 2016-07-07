@@ -31,14 +31,17 @@ Meteor.methods({
 	},
 	'tasks.setChecked'(taskId, setChecked) {
 		console.log(taskId);
-		if (isObject(taskId))
-			const tId = taskId._str;
+		console.log(Tasks.find({}));
+		let tId;
+		if (typeof(taskId) === "object" && taskId !== null)
+			tId = taskId._str;
 		else
-			const tId = taskId
+			tId = taskId;
 		check(tId, String);
 		check(setChecked, Boolean);
+		console.log(Tasks.find({}));
 		const taskToCheck = Tasks.findOne({ _id: tId});
-		if (this.userId && taskToCheck && (! taskToCheck.checked || taskToCheck.creator == this.userId))
+		if (this.userId && taskToCheck && ((! taskToCheck.checked) || taskToCheck.creator == this.userId))
 			Tasks.update(tId, { $set: {checked: setChecked, finisher: this.userId} });
 		else if (! this.userId)
 			throw new Meteor.Error('not-logged');
