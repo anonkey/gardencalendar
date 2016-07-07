@@ -164,8 +164,8 @@ ul {
 
 li {
 
+
   background-image: linear-gradient(to right, #315481, #FFFFFF 10%);
-  display: inline-block;
   position: relative;
 
   list-style: none;
@@ -258,3 +258,13 @@ h2 {
   }
 
 }
+@media (min-width: 1200px) {
+	li {
+
+	  display: inline-block;
+	  width: 40%;
+	}
+}
+
+
+
