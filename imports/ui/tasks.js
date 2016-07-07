@@ -1,5 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { Meteor } from 'meteor/meteor';
 
 import { Tasks } from '../api/tasks.js';
 
@@ -37,11 +38,7 @@ Template.tasklist.events({
 		const target = event.target;
 		const text = event.target.text.value;
 
-		console.log(Tasks.insert({
-			text,
-			date: new Date(),
-		}));
-
+		Meteor.call('tasks.insert', text);
 		target.text.value = '';
 	},
 });
@@ -54,11 +51,9 @@ Template.task.helpers({
 
 Template.task.events({
 	'click .task-delete'() {
-		Tasks.remove(this._id);
+		Meteor.call('tasks.remove', this._id);
 	},
 	'click .toggle-checked'() {
-		Tasks.update(this._id, {
-			$set: {checked: ! this.checked },
-		});
+		Meteor.call('tasks.setChecked', this._id, ! this.checked);
 	},
 });
