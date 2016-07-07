@@ -27,5 +27,9 @@
 	{{#if currentUser}}
 		<button class="task-delete"> &times; </button>
 	{{/if}}
+	{{#if checked}}
+		<span class="taskFinisher"> Finisher : {{finisher}} </span>
+	{{/if}}
+	<span class="taskCreator"> Creator : {{creator}} </span>
 </li>
 </template>

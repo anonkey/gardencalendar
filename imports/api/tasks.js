@@ -23,12 +23,24 @@ Meteor.methods({
 	},
 	'tasks.remove'(taskId) {
 		check(taskId, String);
-		console.log(Tasks.find({ _id: taskId}));
-		Tasks.remove(taskId);
+		const taskToRm = Tasks.findOne({ _id: taskId});
+		if (this.userId && taskToRm && taskToRm.creator == this.userId)
+			Tasks.remove(taskId);
+		else
+			throw new Meteor.Error('not-authorized');
 	},
 	'tasks.setChecked'(taskId, setChecked) {
+		console.log(taskId);
 		check(taskId, String);
 		check(setChecked, Boolean);
-		Tasks.update(taskId, { $set: {checked: setChecked } });
+		const taskToCheck = Tasks.findOne({ _id: taskId});
+		if (this.userId && taskToCheck && (! taskToCheck.checked || taskToCheck.creator == this.userId))
+			Tasks.update(taskId, { $set: {checked: setChecked, finisher: this.userId} });
+		else if (! this.userId)
+			throw new Meteor.Error('not-logged');
+		else if (! taskToCheck)
+			throw new Meteor.Error('bad-id');
+		else
+			throw new Meteor.Error('not-authorized');
 	},
 });

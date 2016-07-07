@@ -11,6 +11,7 @@ Template.tasklist.onCreated(() => {
 		const inst = Template.instance();
 		console.log(inst);
 	inst.state = new ReactiveDict();
+	Meteor.subscribe('tasks');
 });
 
 Template.tasklist.helpers({
@@ -50,10 +51,13 @@ Template.task.helpers({
 });
 
 Template.task.events({
-	'click .task-delete'() {
+	'click .task-delete'(event) {
+		event.preventDefault();
 		Meteor.call('tasks.remove', this._id);
 	},
-	'click .toggle-checked'() {
-		Meteor.call('tasks.setChecked', this._id, ! this.checked);
+	'click .toggle-checked'(event) {
+		event.preventDefault();
+		console.log(this.id, this);
+		Meteor.call('tasks.setChecked', this._id._str, ! this.checked);
 	},
 });
