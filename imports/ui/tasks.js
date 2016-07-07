@@ -58,6 +58,6 @@ Template.task.events({
 	'click .toggle-checked'(event) {
 		event.preventDefault();
 		console.log(this.id, this);
-		Meteor.call('tasks.setChecked', this._id._str, ! this.checked);
+		Meteor.call('tasks.setChecked', this._id, ! this.checked);
 	},
 });
