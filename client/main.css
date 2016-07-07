@@ -165,7 +165,7 @@ ul {
 li {
 
   background-image: linear-gradient(to right, #315481, #FFFFFF 10%);
-  
+  display: inline-block;
   position: relative;
 
   list-style: none;
