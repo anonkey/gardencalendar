@@ -17,7 +17,8 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 		Tasks.insert({
 			text,
-			date: new Date(),
+			start: new Date(),
+			end: new Date(),
 			creator: this.userId,
 		});
 	},
@@ -30,8 +31,6 @@ Meteor.methods({
 			throw new Meteor.Error('not-authorized');
 	},
 	'tasks.setChecked'(taskId, setChecked) {
-		console.log(taskId);
-		console.log(Tasks.find({}));
 		let tId;
 		if (typeof(taskId) === "object" && taskId !== null)
 			tId = taskId._str;

@@ -23,7 +23,7 @@
 	{{else}}
 		<input type="checkbox" checked="{{checked}}" disabled='true' />
 	{{/if}}
-	<span class="task-text"> {{text}} : {{formatDate date}}</span>
+	<span class="task-text"> {{text}} : {{formatDate start}}</span>
 	{{#if currentUser}}
 		<button class="task-delete"> &times; </button>
 	{{/if}}

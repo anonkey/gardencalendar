@@ -37,9 +37,9 @@ Template.tasklist.events({
 		event.preventDefault();
 
 		const target = event.target;
-		const text = event.target.text.value;
+		const title = event.target.text.value;
 
-		Meteor.call('tasks.insert', text);
+		Meteor.call('tasks.insert', title);
 		target.text.value = '';
 	},
 });
